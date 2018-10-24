@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>List Form</title>
+</head>
+<body>
+
+<h1>List Form</h1>
+<form action="#"
+      th:action="@{/process}"
+      th:object="${list}"
+      method="post">
+    <input type="hidden" th:field="*{id}" />
+    What :<input type="text" th:field="*{what}" />
+    <span th:if="${#fields.hasErrors('what')}"
+          th:errors="*{what}"></span><br />
+
+    When :<input type="date" th:field="*{dueDate}" />
+    <span th:if="${#fields.hasErrors('dueDate')}"
+          th:errors="*{dueDate}"></span><br />
+
+    Priority :<input type="text" th:field="*{priority}" />
+    <span th:if="${#fields.hasErrors('priority')}"
+          th:errors="*{priority}"></span><br />
+
+    <input type="submit" value="Submit" />
+</form>
+</body>
+</html>
